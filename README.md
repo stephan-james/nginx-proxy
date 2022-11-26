@@ -8,10 +8,10 @@ Use the following environment variables to customize the container according to 
 
 | Name             | Description                                                                                                                                                                                                                                                                             | Default value       |
 |------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------|
-| `MAPPINGS`       | One to multiple mappings from a relative `path` to a `target` url (concatenated by spaces), e.g. if you want to map http://127.0.0.1/my/new/path/ to http://www.catsanddogs.cad/unlimited/ use `/my/new/path/ http://www.catsanddogs.cad/unlimited/`. Ending slashes are required.      |                     |
-| `USE_SSL`        | If you want to use ssl set it to `true`. The image is using a predefined self signed certificate. To overwrite this certificate with your own certificate map the private key to __/etc/ssl/private/certificate.key__ and the certificate itself to __/etc/ssl/certs/certificate.crt__. | `false`               | 
+| `MAPPINGS`       | One to multiple mappings from a relative `path` to a `target` url (concatenated by spaces), e.g. if you want to map http://127.0.0.1/my/new/path/ to http://www.catsanddogs.cad/unlimited/ use <br><br> `/my/new/path/ http://www.catsanddogs.cad/unlimited/` <br><br> Ending slashes are required.      |                     |
+| `USE_SSL`        | If you want to use ssl set it to `true`. The image is using a predefined self signed certificate. <br><br> To overwrite this certificate with your own certificate mount <ul> <li> the private key into __/etc/ssl/private/certificate.key__ and </li> <li> the certificate itself into __/etc/ssl/certs/certificate.crt__.</li> </ul> | `false`               | 
 | `USE_FORWARD`    | If you want to use X-Forwarding headers (i.e. X-Real-IP, Host and X-Forwarded-For) set it to `true`.                                                                                                                                                                                    | `false`               |
-| `SERVER_NAME`    | Name of the server mginx should use.                                                                                                                                                                                                                                                    | `servername.default` |
+| `SERVER_NAME`    | Name of the server nginx should use.                                                                                                                                                                                                                                                    | `servername.default` |
 
 ## Example
 
@@ -25,6 +25,8 @@ docker run \
     -e SERVER_NAME=my.server.tld \
     -e USE_FORWARD=true \
     -e USE_SSL=true \
+    -v /certs/my.server.tld.key:/etc/ssl/private/certificate.key \
+    -v /certs/my.server.tld.crt:/etc/ssl/certs/certificate.crt \
     heidebergen/nginx-proxy
 ```
 
