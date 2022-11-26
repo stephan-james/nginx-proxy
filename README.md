@@ -1,8 +1,8 @@
 # nginx-proxy
 
-### Docker Image for using nginx as (CORS) proxy.
+### Docker image for using nginx as (CORS) proxy.
 
-The images can be found on dockerhub: https://hub.docker.com/repository/docker/heidebergen/nginx-proxy.
+The image can be found on dockerhub: https://hub.docker.com/repository/docker/heidebergen/nginx-proxy.
 
 Use the following environment variables to customize the container according to your needs:
 
