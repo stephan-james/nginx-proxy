@@ -21,7 +21,7 @@ Run a container with the following arguments:
 docker run \
     -p 8080:80 \
     -p 8443:443 \
-    -e MAPPINGS=/api/cats/ http://cats-server.tld/deeper/ /api/dogs/ https://dogs-server/ \
+    -e MAPPINGS="/api/cats/ http://cats-server.tld/deeper/ /api/dogs/ https://dogs-server/" \
     -e SERVER_NAME=my.server.tld \
     -e USE_FORWARD=true \
     -e USE_SSL=true \
